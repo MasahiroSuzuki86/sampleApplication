@@ -13,7 +13,7 @@ import com.example.demo.service.UserSearchService;
 
 @Controller
 @RequestMapping("/userList")
-public class userListController {
+public class UserListController {
 	
 	/** ユーザー検索サービス */
 	@Autowired
