@@ -15,6 +15,7 @@ import com.example.demo.service.UserSearchService;
 @RequestMapping("/userList")
 public class userListController {
 	
+	/** ユーザー検索サービス */
 	@Autowired
 	private UserSearchService userSearchService;
 	
