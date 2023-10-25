@@ -26,6 +26,9 @@
 					<td th:text="${user.id}"></td>
 					<td th:text="${user.name}"></td>
 					<td th:text="${user.email}"></td>
+					<td>
+						<a th:href="@{'../../infoChange/' + ${user.id}}">詳細</a>
+					</td>
 				</tr>
 			</table>
 		</div>
