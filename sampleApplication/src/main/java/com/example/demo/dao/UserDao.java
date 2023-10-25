@@ -31,6 +31,27 @@ public class UserDao {
 	}
 	
 	/**
+	 * ユーザー１件だけ検索するメソッド
+	 * @param id
+	 * @return
+	 */
+	public User searchOne(int id) {
+		
+		String query = "SELECT * FROM user WHERE id = ?";
+		
+		Map<String, Object> map = jdbc.queryForMap(query, id);
+		
+		User user = new User();
+		user.setId((int)map.get("id"));
+		user.setName((String)map.get("name"));
+		user.setEmail((String)map.get("email"));
+		
+		
+		return user;
+		
+	}
+	
+	/**
 	 * ユーザーテーブルに１件追加するメソッド
 	 * @param user
 	 * @return
@@ -39,6 +60,25 @@ public class UserDao {
 		
 		int rowNumber = jdbc.update("INSERT INTO user(name, email) "
 				 + "VALUES(?, ?)", user.getName(), user.getEmail());
+		
+		return rowNumber;
+	}
+	
+	/**
+	 * 1件更新メソッド
+	 * @param user
+	 * @return
+	 */
+	public int updateOne(User user) {
+		
+		int rowNumber = jdbc.update("UPDATE user "
+				+ "SET "
+				+ "name = ?, "
+				+ "email = ? "
+				+ "WHERE id = ?"
+				, user.getName()
+				, user.getEmail()
+				, user.getId());
 		
 		return rowNumber;
 	}
