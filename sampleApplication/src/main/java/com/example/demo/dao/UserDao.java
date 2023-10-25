@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.data.User;
+
 @Component
 public class UserDao {
 	
@@ -26,6 +28,19 @@ public class UserDao {
 		
 		//実行結果をリターンする
 		return list;
+	}
+	
+	/**
+	 * ユーザーテーブルに１件追加するメソッド
+	 * @param user
+	 * @return
+	 */
+	public int insertOne(User user) {
+		
+		int rowNumber = jdbc.update("INSERT INTO user(name, email) "
+				 + "VALUES(?, ?)", user.getName(), user.getEmail());
+		
+		return rowNumber;
 	}
 
 }
