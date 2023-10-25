@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー一覧画面</title>
+</head>
+<body>
+	<div>
+		<div class="main-element">
+			<h2>ユーザー一覧</h2>
+		</div>
+		<div>
+			<table class="table">
+				<tr>
+					<th>
+						<label>id</label>
+					</th>
+					<th>
+						<label>名前</label>
+					</th>
+					<th>
+						<label>メールアドレス</label>
+					</th>
+				</tr>
+				<tr th:if="${!#lists.isEmpty(userList)}" th:each="user:${userList}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.email}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
